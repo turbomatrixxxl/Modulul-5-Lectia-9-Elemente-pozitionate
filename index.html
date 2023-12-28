@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lectia 9 Elemente poziționate</title>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <!-- Body -->
+  <body>
+    <h1>Modulul 5 - Lecția 9 - Elemente poziționate</h1>
+
+    <!-- Header -->
+    <header>
+      <nav>
+        <ol style="list-style: upper-roman">
+          <li><a href="#poziționarea">Poziționarea elementelor</a></li>
+          <li><a href="#z-index">Proprietatea z-index</a></li>
+          <li><a href="#overflow">Proprietatea overflow</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- I. Poziționarea elementelor -->
+      <section>
+        <h2 id="poziționarea">I. Poziționarea elementelor</h2>
+        <p>
+          În mod implicit, elementele de pe o pagină web sunt aranjate de la
+          stânga la dreapta și de sus în jos. Dar, cum poate fi plasat un text
+          deasupra imaginii unui produs? Sau ce ziceți de afișarea unui element
+          peste altul la hover? Sau cum să faceți ca meniul să fie întotdeauna
+          atașat în partea de sus a vizualizării chiar și atunci când scrolați
+          spre josul paginii? Pentru a rezolva astfel de probleme, se folosește
+          proprietatea position care permite să ridicați literalmente un element
+          și să-l plasați peste oricare altul.
+        </p>
+        <p>
+          Poziționarea statică (static) este starea inițială a tuturor
+          elementelor unei pagini web. Box model și flexbox plasează elemente în
+          acest flux static al paginii. Poziționarea relativă (relative),
+          absolută (absolute) și fixă (fixed), vă permit să ridicați un element
+          deasupra fluxului de pagină și să-l poziționați manual folosind un
+          sistem de coordonate a cărui origine depinde de tipul de poziționare.
+        </p>
+        <p><b>Atentie...!</b></p>
+        <p>
+          Marea majoritate a elementelor ar trebui să fie așezate conform
+          fluxului static standard al paginii. Alte scheme de poziționare sunt
+          folosite pentru efecte decorative și când poziționarea nu se poate
+          face altfel.
+        </p>
+        <ol>
+          <li>
+            <h3>Proprietatea position</h3>
+            <p>
+              Aceasta modifică tipul de poziționare al unui element. Valoarea
+              implicită este static. Pentru a specifica poziția unui element,
+              sunt utilizate proprietățile top, left, bottom sau right, care nu
+              se aplică elementelor fără position.
+            </p>
+            <p>
+              position: static | relative | absolute | fixed | sticky | inherit
+            </p>
+            <p>
+              Un element al cărui proprietate position are o altă valoare decât
+              static se numește "element poziționat".
+            </p>
+          </li>
+          <li>
+            <h3>Poziționarea relativă</h3>
+            <p>
+              Atunci când se utilizează poziționare relativă, elementul rămâne
+              în fluxul paginii, adică elementele adiacente nu îi iau locul. Cu
+              toate acestea, vizual, elementul poate fi deplasat în raport cu
+              poziția inițială și se poate suprapune pe vecinii săi.
+            </p>
+            <p>
+              Proprietățile top, left, bottom și right, vă permit să specificați
+              decalajul vizual al unui element în raport cu poziția sa inițială.
+            </p>
+            <p>
+              Proprietățile top, left, bottom și right, vă permit să specificați
+              decalajul vizual al unui element în raport cu poziția sa inițială.
+            </p>
+            <p><b>Util...!</b></p>
+            <p>
+              În sine, poziționarea relativă nu este utilizată deoarece
+              elementul nu este scos din fluxul paginii, și continuă să ocupe
+              spațiu. Poziționarea relativă este utilizată numai alături de
+              poziționarea absolută.
+            </p>
+            <p>
+              Haideți să creăm trei segmente. Pentru cel din mijloc div.relative
+              setăm o poziție relativă cu o deplasare vizuală la dreapta și în
+              jos, față de poziția inițială.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="body">
+                <div class="relative-container">
+                  <div class="relative-box"></div>
+                  <div class="relative-box relative"></div>
+                  <div class="relative-box"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>Poziționarea absolută</h3>
+            <p>
+              În cazul poziționării absolute, elementul principal este scos din
+              fluxul paginii, iar cele adiacente îi iau locul. Valorile top,
+              left, bottom și right pentru un element poziționat absolut sunt
+              calculate în raport cu cel mai apropiat strămoș care nu utilizează
+              poziționarea statică. Dacă nu există un astfel de descendent,
+              valorile vor fi calculate din marginile elementului (body).
+            </p>
+            <p>
+              În sine, poziționarea absolută nu este foarte utilă și este
+              utilizată, de exemplu, în combinație cu poziționarea relativă
+              pentru o poziționare decorativă a elementelor. Deci, elementul are
+              o poziție "absolută", "relativă” față de unii descendenți din
+              fluxul paginii.
+            </p>
+            <p>
+              Prin urmare valorile top, left, right și bottom, pentru un element
+              poziționat absolut sunt calculate de la marginile acelui
+              descendent, și nu de la (body). Adică, setarea position: relative
+              față de un descendent este folosită doar cu un singur scop –
+              pentru a forța așezarea unui element absolut poziționat în raport
+              cu acest descendent.
+            </p>
+            <p><b>Util...!</b></p>
+            <p>
+              Prin urmare valorile top, left, right și bottom, pentru un element
+              poziționat absolut sunt calculate de la marginile acelui parinte,
+              și nu de la (body). Adică, setarea position: relative față de un
+              descendent este folosită doar cu un singur scop – pentru a forța
+              așezarea unui element absolut poziționat în raport cu acest
+              parinte.
+            </p>
+            <p>
+              Vom crea trei secțiuni, fiecare cu o imagine și un text. Vom seta
+              poziționarea relativă pentru div.thumb și poziționarea absolută
+              pentru p.label, astfel încât să putem pune un text deasupra
+              imaginii. Nu uităm să eliminăm marginea din p.label deoarece
+              acesta afectează deplasarea elementului în sine, dar nu și alte
+              elemente din flux.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="body">
+                <div class="absolute-container">
+                  <div class="absolute-thumb">
+                    <img
+                      src="https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=320"
+                      alt="two-yellow-labrador-retriever-puppies"
+                    />
+                    <p class="absolute-label">Dog</p>
+                  </div>
+
+                  <div class="absolute-thumb">
+                    <img
+                      src="https://images.pexels.com/photos/2558605/pexels-photo-2558605.jpeg?auto=compress&cs=tinysrgb&dpr=2&&w=320"
+                      alt="adorable-animal-blur-cat"
+                    />
+                    <p class="absolute-label">Cat</p>
+                  </div>
+
+                  <div class="absolute-thumb">
+                    <img
+                      src="https://images.pexels.com/photos/1300361/pexels-photo-1300361.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=320"
+                      alt="black-hog-prone-lying-on-soil-under-shade-of-tree"
+                    />
+                    <p class="absolute-label">Pig</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p><b>Atentie...!</b></p>
+            <p>
+              Dacă div.thumb nu este poziționat relativ, atunci toate cele trei
+              p.labels vor fi plasate în colțul din dreapta sus al ferestrei,
+              deoarece valorile top și right vor fi calculate relativ la
+              elementul (body).
+            </p>
+          </li>
+          <li>
+            <h3>Poziționarea fixă</h3>
+            <p>
+              Când se utilizează poziționarea fixă, elementul este scos din
+              fluxul paginii și poziționat în raport cu fereastra de vizualizare
+              (fereastra browserului). Acest lucru creează un efect de fixare a
+              elementului într-un anumit loc de pe ecran la derularea paginii.
+            </p>
+            <p>
+              Poziționarea fixă poate fi folosită pentru antete fixe de
+              navigare, ferestre pop-up, manageri de chat din magazinele online
+              etc.
+            </p>
+            <p>
+              Vom crea un buton de chat cu managerul button.chat-button și îl
+              vom plasa în colțul din dreapta jos al ferestrei de vizualizare.
+              La derularea paginii, butonul rămâne pe loc deoarece are o poziție
+              fixă.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="fixed-body">
+                <button class="chat-button"></button>
+
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Quaerat iste reprehenderit debitis hic cupiditate dolorem
+                  repudiandae, recusandae id esse delectus magnam maxime nobis,
+                  tenetur officiis deleniti quo omnis, eligendi dolores alias
+                  sit reiciendis autem? Vero quo debitis dolorem error minus
+                  sint tenetur iusto commodi nihil itaque impedit cum facilis
+                  eveniet dolore explicabo rerum repudiandae nisi quasi
+                  provident doloremque, inventore dignissimos! Laborum repellat
+                  assumenda, maiores, cumque non provident animi error nam
+                  asperiores vitae sed saepe nesciunt, facere eligendi. Aliquid,
+                  delectus. Quasi et, cumque ipsa nesciunt velit voluptates
+                  tenetur fugiat, provident nobis cupiditate facilis quaerat
+                  magni, ipsum reiciendis? Placeat, facere. Provident, quam
+                  doloremque. Architecto cum, nisi dolores, ipsa eaque maiores
+                  fugiat magnam quasi sunt amet culpa quod necessitatibus
+                  quisquam recusandae veniam aperiam modi animi. At quae ea
+                  ducimus vero aperiam ratione, ullam architecto ut assumenda
+                  vel natus commodi quisquam tempora! Magni omnis voluptatibus,
+                  veritatis saepe illo rem aspernatur unde. Maiores, earum
+                  illum. Nemo modi debitis culpa commodi aliquam molestias quas
+                  ipsam ex nostrum perferendis ratione adipisci a, ullam esse
+                  porro, doloribus, asperiores voluptatem at? Cupiditate
+                  explicabo dolore ipsa voluptate totam reprehenderit doloremque
+                  aut. Eius, pariatur magni nisi, optio enim odio porro cum fuga
+                  quasi, quis rerum incidunt eligendi corporis dolor autem ad!
+                </p>
+                <p>
+                  Aliquid repellat voluptatem quam labore maiores veritatis, qui
+                  minima velit autem dolorem sequi nostrum ad ipsa ratione
+                  laboriosam incidunt officiis eaque sed dicta nulla eligendi
+                  totam sapiente non modi? Repudiandae est, nobis consectetur
+                  nulla consequuntur tempora molestiae debitis blanditiis quas
+                  minima. Fugit ducimus magni velit eveniet dicta veniam
+                  suscipit officia vel itaque, libero iste placeat quasi ex
+                  quibusdam beatae consequuntur facere officiis? Quae aut, magni
+                  saepe repellendus eaque minima. Sunt fugit ad id? Assumenda
+                  aliquam quas maiores, vel illum atque asperiores commodi
+                  dolorem facilis? Assumenda expedita consequuntur quasi
+                  eligendi. Corrupti sunt, minima odit illo eum error vel
+                  praesentium, quod nihil, ad accusantium quibusdam atque odio.
+                  Quod aut perspiciatis sunt sed quae fuga illo consequuntur
+                  delectus? Iusto magni doloribus error iure, enim dolorem,
+                  culpa dolore placeat ea esse corrupti. Sapiente, repellendus
+                  aperiam, nisi quis officiis natus assumenda pariatur
+                  blanditiis aspernatur voluptas totam perferendis. Delectus
+                  voluptas beatae perspiciatis tempora dolorum veritatis
+                  corrupti alias incidunt dolorem fugiat. Nobis provident nisi
+                  animi, possimus hic tempora et sunt iste qui voluptatibus
+                  eveniet iusto, reprehenderit impedit quod, culpa delectus iure
+                  officia cum rerum harum. Eveniet perferendis et ratione autem
+                  beatae repellendus, corporis eos tenetur voluptate possimus
+                  quae quisquam accusantium qui nihil fugiat fugit error impedit
+                  molestiae.
+                </p>
+                <p>
+                  Fuga in dolorum quod suscipit nisi officia, laborum, nesciunt
+                  voluptatem esse consequatur harum iste accusantium, nihil
+                  excepturi odio tempora iusto possimus. Adipisci, obcaecati!
+                  Asperiores aut nisi repellat accusantium, ab numquam nostrum
+                  commodi reiciendis itaque amet dolore repellendus rem harum
+                  qui dolor voluptatem esse sunt eos ex consequuntur voluptate
+                  fugiat ipsa error minus! Cumque animi omnis placeat temporibus
+                  voluptatum sequi perferendis enim est, sunt accusantium optio
+                  similique illo, consequatur quasi provident culpa. Ea porro
+                  esse dolorum? Unde quod illum quos, molestiae iure illo
+                  beatae, nemo atque consectetur, qui earum minima
+                  necessitatibus excepturi adipisci eos dolore sint vel tempora
+                  voluptate? Quam deserunt ipsum consectetur dolore eum
+                  quibusdam voluptates nam, sed et voluptate, veniam atque esse
+                  fugiat sequi, neque omnis. Expedita ut mollitia eveniet
+                  voluptatibus ipsam, rem reprehenderit eligendi corporis
+                  provident soluta ea quo, ratione dignissimos unde quae labore!
+                  Vitae nam placeat voluptate dicta asperiores, quibusdam sequi,
+                  enim magni porro facilis, omnis laudantium officia? Illum
+                  fugit quia exercitationem provident ratione iure! Ipsa
+                  voluptates asperiores, doloribus quia facere labore facilis
+                  molestias delectus tempore nesciunt, optio omnis
+                  reprehenderit, exercitationem blanditiis numquam quidem ipsum.
+                  Atque et earum reprehenderit amet nostrum, dignissimos
+                  delectus, aut quas a accusamus corrupti voluptate repudiandae
+                  quia, ipsa cupiditate similique perferendis dolor doloribus!
+                </p>
+                <p>
+                  Voluptas, facilis accusantium? Eveniet error ea consectetur
+                  enim quas consequuntur provident doloremque facere neque sit
+                  sed accusamus, saepe laboriosam aut? Error rem ratione
+                  similique explicabo, repellat doloribus quos sint quaerat
+                  dolorem magnam dolor atque aliquam fugit ea, aliquid nisi in
+                  vero repudiandae voluptates totam consequuntur tempori
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>Poziționarea sticky</h3>
+            <p>
+              Poziționarea sticky este ca o combinație dintre proprietățile
+              relative și fixed. În primul rând, vedeți ilustrația în care
+              poziționarea sticky este atribuită elementelor cu literele A și B,
+              astfel încât va fi imediat clar.
+            </p>
+            <ol>
+              <li>
+                În timp ce elementul se află în containerul său și containerul
+                nu iese din domeniul de aplicare al ferestrei de vizualizare,
+                elementul se va comporta ca și cum ar fi fost poziționat relativ
+                (relative).
+              </li>
+              <li>
+                De îndată ce o parte a containerului părinte iese din domeniul
+                de aplicare al ferestrei de vizualizare, elementul este fixat pe
+                pagină atâta timp cât există cel puțin o parte a containerului
+                pe ecran.
+              </li>
+              <li>
+                Dacă întregul container iese din domeniul de aplicare,
+                poziționarea relativă va fi din nou activă, iar elementul va
+                dispărea complet de pe ecran împreună cu containerul.
+              </li>
+            </ol>
+            <p>
+              Pentru a implementa poziționarea sticky, sunt necesare doar trei
+              condiții:
+            </p>
+            <ul>
+              <li>
+                Pentru un element sticky trebuie setată poziționarea position:
+                sticky.
+              </li>
+              <li>
+                Elementul sticky trebuie să aibă o poziție setată, de exemplu
+                top: 0.
+              </li>
+              <li>
+                Elementul container trebuie să fie mai înalt decât elementul
+                sticky.
+              </li>
+            </ul>
+            <p>
+              Antetele secțiunilor din exemplu folosesc poziționarea sticky, așa
+              că atunci când derulăm pagina, ele vor rămâne fixate în partea de
+              sus a ferestrei de vizualizare atâta timp cât va fi vizibilă o
+              parte a secțiunii lor.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="sticky-body">
+                <section class="section">
+                  <h2 class="section-title">First section heading</h2>
+                  <p class="section-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem, excepturi? Et molestiae aspernatur, recusandae
+                    itaque veritatis reprehenderit facere deserunt corrupti
+                    nesciunt beatae quos vitae? Voluptatibus recusandae quis at,
+                    fugit vero alias facilis, corrupti labore in, explicabo
+                    beatae? Vel labore cum voluptatum ullam amet nihil quia
+                    excepturi similique assumenda obcaecati? Quis quibusdam nam
+                    unde, magni non repellat. Aliquam voluptatibus, vel,
+                    incidunt ut facilis, inventore amet sint quisquam neque
+                    consequatur hic. Exercitationem itaque inventore ad amet
+                    corporis labore cupiditate eius ullam voluptates nihil,
+                    fugit vero a velit esse voluptas consequatur eos minima quod
+                    assumenda ab officia repudiandae dicta sint. Voluptate nemo
+                    dolor sapiente impedit! Nam velit repellat cupiditate! Cum
+                    hic sint fugiat necessitatibus ipsam pariatur debitis minus
+                    est, eum eos ratione enim porro exercitationem facere, a
+                    voluptas obcaecati voluptatibus cupiditate beatae deserunt
+                    aliquam iusto aut quas temporibus! Harum officia in
+                    voluptatum! Quidem, voluptatibus culpa repellendus incidunt
+                    aspernatur saepe, ipsum officia, inventore quo maiores
+                    libero quaerat ipsa dignissimos labore blanditiis provident
+                    qui recusandae sunt dolorem? Necessitatibus maiores et quos
+                    odit nemo quas quibusdam, aliquam voluptatum sint cupiditate
+                    sequi consequatur cumque nulla quaerat at perspiciatis quis
+                    voluptatibus natus fuga dignissimos accusamus. Odio,
+                    quibusdam fuga earum sit explicabo cumque, facilis
+                    consequatur et voluptas doloribus rerum.
+                  </p>
+                </section>
+
+                <section class="section">
+                  <h2 class="section-title">Second section heading</h2>
+                  <p class="section-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem, excepturi? Et molestiae aspernatur, recusandae
+                    itaque veritatis reprehenderit facere deserunt corrupti
+                    nesciunt beatae quos vitae? Voluptatibus recusandae quis at,
+                    fugit vero alias facilis, corrupti labore in, explicabo
+                    beatae? Vel labore cum voluptatum ullam amet nihil quia
+                    excepturi similique assumenda obcaecati? Quis quibusdam nam
+                    unde, magni non repellat. Aliquam voluptatibus, vel,
+                    incidunt ut facilis, inventore amet sint quisquam neque
+                    consequatur hic. Exercitationem itaque inventore ad amet
+                    corporis labore cupiditate eius ullam voluptates nihil,
+                    fugit vero a velit esse voluptas consequatur eos minima quod
+                    assumenda ab officia repudiandae dicta sint. Voluptate nemo
+                    dolor sapiente impedit! Nam velit repellat cupiditate! Cum
+                    hic sint fugiat necessitatibus ipsam pariatur debitis minus
+                    est, eum eos ratione enim porro exercitationem facere, a
+                    voluptas obcaecati voluptatibus cupiditate beatae deserunt
+                    aliquam iusto aut quas temporibus! Harum officia in
+                    voluptatum! Quidem, voluptatibus culpa repellendus incidunt
+                    aspernatur saepe, ipsum officia, inventore quo maiores
+                    libero quaerat ipsa dignissimos labore blanditiis provident
+                    qui recusandae sunt dolorem? Necessitatibus maiores et quos
+                    odit nemo quas quibusdam, aliquam voluptatum sint cupiditate
+                    sequi consequatur cumque nulla quaerat at perspiciatis quis
+                    voluptatibus natus fuga dignissimos accusamus. Odio,
+                    quibusdam fuga earum sit explicabo cumque, facilis
+                    consequatur et voluptas doloribus rerum.
+                  </p>
+                </section>
+
+                <section class="section">
+                  <h2 class="section-title">Third section heading</h2>
+                  <p class="section-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem, excepturi? Et molestiae aspernatur, recusandae
+                    itaque veritatis reprehenderit facere deserunt corrupti
+                    nesciunt beatae quos vitae? Voluptatibus recusandae quis at,
+                    fugit vero alias facilis, corrupti labore in, explicabo
+                    beatae? Vel labore cum voluptatum ullam amet nihil quia
+                    excepturi similique assumenda obcaecati? Quis quibusdam nam
+                    unde, magni non repellat. Aliquam voluptatibus, vel,
+                    incidunt ut facilis, inventore amet sint quisquam neque
+                    consequatur hic. Exercitationem itaque inventore ad amet
+                    corporis labore cupiditate eius ullam voluptates nihil,
+                    fugit vero a velit esse voluptas consequatur eos minima quod
+                    assumenda ab officia repudiandae dicta sint. Voluptate nemo
+                    dolor sapiente impedit! Nam velit repellat cupiditate! Cum
+                    hic sint fugiat necessitatibus ipsam pariatur debitis minus
+                    est, eum eos ratione enim porro exercitationem facere, a
+                    voluptas obcaecati voluptatibus cupiditate beatae deserunt
+                    aliquam iusto aut quas temporibus! Harum officia in
+                    voluptatum! Quidem, voluptatibus culpa repellendus incidunt
+                    aspernatur saepe, ipsum officia, inventore quo maiores
+                    libero quaerat ipsa dignissimos labore blanditiis provident
+                    qui recusandae sunt dolorem? Necessitatibus maiores et quos
+                    odit nemo quas quibusdam, aliquam voluptatum sint cupiditate
+                    sequi consequatur cumque nulla quaerat at perspiciatis quis
+                    voluptatibus natus fuga dignissimos accusamus. Odio,
+                    quibusdam fuga earum sit explicabo cumque, facilis
+                    consequatur et voluptas doloribus rerum.
+                  </p>
+                </section>
+
+                <section class="section">
+                  <h2 class="section-title">Fourth section heading</h2>
+                  <p class="section-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatem, excepturi? Et molestiae aspernatur, recusandae
+                    itaque veritatis reprehenderit facere deserunt corrupti
+                    nesciunt beatae quos vitae? Voluptatibus recusandae quis at,
+                    fugit vero alias facilis, corrupti labore in, explicabo
+                    beatae? Vel labore cum voluptatum ullam amet nihil quia
+                    excepturi similique assumenda obcaecati? Quis quibusdam nam
+                    unde, magni non repellat. Aliquam voluptatibus, vel,
+                    incidunt ut facilis, inventore amet sint quisquam neque
+                    consequatur hic. Exercitationem itaque inventore ad amet
+                    corporis labore cupiditate eius ullam voluptates nihil,
+                    fugit vero a velit esse voluptas consequatur eos minima quod
+                    assumenda ab officia repudiandae dicta sint. Voluptate nemo
+                    dolor sapiente impedit! Nam velit repellat cupiditate! Cum
+                    hic sint fugiat necessitatibus ipsam pariatur debitis minus
+                    est, eum eos ratione enim porro exercitationem facere, a
+                    voluptas obcaecati voluptatibus cupiditate beatae deserunt
+                    aliquam iusto aut quas temporibus! Harum officia in
+                    voluptatum! Quidem, voluptatibus culpa repellendus incidunt
+                    aspernatur saepe, ipsum officia, inventore quo maiores
+                    libero quaerat ipsa dignissimos labore blanditiis provident
+                    qui recusandae sunt dolorem? Necessitatibus maiores et quos
+                    odit nemo quas quibusdam, aliquam voluptatum sint cupiditate
+                    sequi consequatur cumque nulla quaerat at perspiciatis quis
+                    voluptatibus natus fuga dignissimos accusamus. Odio,
+                    quibusdam fuga earum sit explicabo cumque, facilis
+                    consequatur et voluptas doloribus rerum.
+                  </p>
+                </section>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- II. Proprietatea z-index -->
+      <section>
+        <h2 id="z-index">II. Proprietatea z-index</h2>
+        <p>
+          Înainte de a începe să folosim poziționarea elementelor, nu am avut
+          de-a face cu problemele privind ordinea de afișare. Până acum
+          poziționam elementele într-un sistem de coordonate bidimensional: x pe
+          orizontală și y pe verticală. Ordinea de afișare era determinată numai
+          de imbricarea elementelor – strămoșul fiind situat în partea de jos,
+          ca o foaie de hârtie, iar descendentul, ca o nouă foaie de hârtie,
+          situat în partea de sus.
+        </p>
+        <ol>
+          <li>
+            <h3>Reguli de aplicare</h3>
+            <p>
+              Strămoșul comun al elementelor poziționate creează un context
+              (context de stivuire) – o zonă în care proprietatea z-index a
+              elementului afectează alte elemente cu z-index. Cu cât valoarea
+              z-index este mai mare în acest context, cu atât elementul este
+              poziționat mai sus.
+            </p>
+            <p>
+              O valoare minimă (chiar negativă) a z-index indică faptul că alte
+              elemente din afara fluxului vor fi mai mari decât acest element.
+              Dacă două elemente au aceleași valori z-index, elementul care a
+              fost declarat ultimul în codul HTML va fi poziționat mai sus.
+            </p>
+            <p>
+              Există o mulțime de reguli de reținut, dar de fapt totul este
+              foarte simplu. În exemplul div.container poziționat relativ,
+              acesta este strămoșul comun al celor patru div.box care sunt
+              plasate în interiorul acestuia cu poziționare absolută. Folosind
+              proprietatea z-index, le puteți modifica ordinea de afișare pe axa
+              z.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <div class="z-body">
+                <div class="z-container">
+                  <div class="z-box">1</div>
+                  <div class="z-box">2</div>
+                  <div class="z-box">3</div>
+                  <div class="z-box">4</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- III. Proprietatea overflow -->
+      <section>
+        <h2 id="overflow">III. Proprietatea overflow</h2>
+        <p>
+          Dimensiunile unui element sunt determinate de conținutul din
+          interiorul acestuia sau în mod explicit. Ce se întâmplă atunci când
+          conținutul din interiorul unui element se schimbă? De exemplu, dacă nu
+          setăm o înălțime, aceasta va crește până când întregul conținut se va
+          încadra în element.
+        </p>
+        <p>
+          Dar ce se întâmplă dacă înălțimea sau lățimea sunt specificate în mod
+          explicit? În acest caz, elementul nu se poate mări, și conținutul îl
+          va depăși – va ieși din limite. Proprietatea overflow este cea care
+          controlează modul în care se comportă conținutul unui element dacă
+          dimensiunea acestuia depășește valorile stabilite în mod explicit
+          pentru lungimea sau lățimea elementului.
+        </p>
+        <p>overflow: visible | hidden | scroll | auto</p>
+        <ul>
+          <li>
+            visible – conținutul debordant este vizibil. Aceasta este valoarea
+            implicită.
+          </li>
+          <li>
+            hidden – tot ceea ce depășește limitele elementelor, va fi ascuns
+            vizual.
+          </li>
+          <li>
+            scroll – dacă conținutul este debordant, apar atât barele de
+            scrolare orizontale, cât și verticale, chiar dacă este nevoie doar
+            de una.
+          </li>
+          <li>
+            auto – similar cu scroll, însă, barele de scrolare sunt afișate
+            numai acolo unde sunt necesare și nu sunt afișate imediat.
+          </li>
+        </ul>
+        <p><b>Util...!</b></p>
+        <p>
+          De asemenea, există proprietățile overflow-x și overflow-y care
+          controlează depășirea numai în planul corespunzător.
+        </p>
+        <p>
+          Haideți să analizăm comportamentul unui element cu o dimensiune fixă
+          pentru fiecare valoare overflow.
+        </p>
+        <ol>
+          <li>
+            <h3>Valoarea visible</h3>
+            <p>
+              Să presupunem că proprietatea overflow nu este specificată. În
+              acest caz, valoarea setată implicit este visible, ceea ce înseamnă
+              că, conținutul va fi afișat înafara secțiunii. În exemplul de mai
+              jos, bordura secțiunii este indicată cu roșu.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="visible-body">
+                <div class="visible-box">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  cum quibusdam similique debitis eos, fuga in ipsum quaerat
+                  impedit, nam error atque sequi laudantium incidunt hic
+                  assumenda! Autem, voluptatum ratione. Ab illum quasi
+                  exercitationem dignissimos, quae est eaque eligendi maxime
+                  omnis laudantium quos, doloremque adipisci quidem dicta
+                  recusandae facilis? Velit, commodi consectetur, quas a
+                  repudiandae magni illo iure rem obcaecati quam officiis
+                  cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae
+                  voluptate incidunt alias, possimus laudantium molestias
+                  soluta, ea nihil delectus praesentium ipsum ducimus aspernatur
+                  placeat a totam deserunt! Vel quaerat deleniti dolore aperiam
+                  similique nam harum, aliquam fugiat adipisci aliquid laborum
+                  amet.
+                </div>
+
+                <button>
+                  The text overflowing outside the div.box will not affect the
+                  position of this button, because the overflow is only visual.
+                </button>
+              </div>
+              <p><b>Atentie...!</b></p>
+              <p>
+                Chiar dacă există un conținut vizibil, debordant în afara unui
+                element, acel conținut nu afectează geometria elementelor
+                adiacente, ca în cazul exemplului de mai sus.
+              </p>
+            </div>
+          </li>
+          <li>
+            <h3>Valoarea hidden</h3>
+            <p>
+              Valoarea hidden are un efect opus celei anterioare. În acest caz,
+              orice conținut debordant care se extinde dincolo de limitele
+              elementului nu va fi afișat. Acest lucru este util atunci când
+              folosiți efecte decorative, exemplele cărora le vom analiza în
+              continuare.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="hidden-body">
+                <div class="hidden-box">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  cum quibusdam similique debitis eos, fuga in ipsum quaerat
+                  impedit, nam error atque sequi laudantium incidunt hic
+                  assumenda! Autem, voluptatum ratione. Ab illum quasi
+                  exercitationem dignissimos, quae est eaque eligendi maxime
+                  omnis laudantium quos, doloremque adipisci quidem dicta
+                  recusandae facilis? Velit, commodi consectetur, quas a
+                  repudiandae magni illo iure rem obcaecati quam officiis
+                  cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae
+                  voluptate incidunt alias, possimus laudantium molestias
+                  soluta, ea nihil delectus praesentium ipsum ducimus aspernatur
+                  placeat a totam deserunt! Vel quaerat deleniti dolore aperiam
+                  similique nam harum, aliquam fugiat adipisci aliquid laborum
+                  amet.
+                </div>
+
+                <button class="hidden">
+                  The text overflowing outside the div.box will not affect the
+                  position of this button, because the overflow is only visual.
+                </button>
+              </div>
+              <p><b>Atentie...!</b></p>
+              <p>
+                Rețineți că în acest caz conținutul debordant nu este accesibil,
+                fiind ascuns de utilizator. Acesta este motivul pentru care nu
+                vom seta niciodată o înălțime fixă secțiunilor de text.
+              </p>
+            </div>
+          </li>
+          <li>
+            <h3>Valoarea scroll</h3>
+            <p>
+              Dacă valoarea scroll este setată, conținutul debordant va fi
+              ascuns, dar vor apărea barele de scroll pentru a permite
+              vizualizarea întregului conținut. Aceasta va afișa ambele bare de
+              scroll, orizontală și verticală, chiar dacă este nevoie de una
+              singură.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="scroll-body">
+                <div class="scroll-box">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  cum quibusdam similique debitis eos, fuga in ipsum quaerat
+                  impedit, nam error atque sequi laudantium incidunt hic
+                  assumenda! Autem, voluptatum ratione. Ab illum quasi
+                  exercitationem dignissimos, quae est eaque eligendi maxime
+                  omnis laudantium quos, doloremque adipisci quidem dicta
+                  recusandae facilis? Velit, commodi consectetur, quas a
+                  repudiandae magni illo iure rem obcaecati quam officiis
+                  cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae
+                  voluptate incidunt alias, possimus laudantium molestias
+                  soluta, ea nihil delectus praesentium ipsum ducimus aspernatur
+                  placeat a totam deserunt! Vel quaerat deleniti dolore aperiam
+                  similique nam harum, aliquam fugiat adipisci aliquid laborum
+                  amet.
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>Valoarea auto</h3>
+            <p>
+              Valoarea auto este similară cu valoarea scroll, cu excepția
+              faptului că sunt afișate doar barele de scroll care sunt, de fapt,
+              necesare.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="auto-body">
+                <div class="auto-box">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  cum quibusdam similique debitis eos, fuga in ipsum quaerat
+                  impedit, nam error atque sequi laudantium incidunt hic
+                  assumenda! Autem, voluptatum ratione. Ab illum quasi
+                  exercitationem dignissimos, quae est eaque eligendi maxime
+                  omnis laudantium quos, doloremque adipisci quidem dicta
+                  recusandae facilis? Velit, commodi consectetur, quas a
+                  repudiandae magni illo iure rem obcaecati quam officiis
+                  cupiditate perspiciatis? Doloremque, ipsa laborum. Beatae
+                  voluptate incidunt alias, possimus laudantium molestias
+                  soluta, ea nihil delectus praesentium ipsum ducimus aspernatur
+                  placeat a totam deserunt! Vel quaerat deleniti dolore aperiam
+                  similique nam harum, aliquam fugiat adipisci aliquid laborum
+                  amet.
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>Imagini rotunjite</h3>
+            <p>
+              Imaginile se comportă în așa fel încât, dacă dimensiunea lor este
+              mai mare, acestea ies vizual în afara elementului. Acest lucru
+              apare în tehnica de rotunjire a chenarului unei imagini. Imaginea
+              este cuprinsă într-un "dulap", care stabilește stilurile
+              chenarului și raza acesteia.
+            </p>
+            <div class="thumb">
+              <img src="" alt="" />
+            </div>
+            <p>
+              Deoarece imaginea depășește întotdeauna limitele elementului, nu
+              vom obține exact rezultatul dorit.
+            </p>
+            <p>
+              Pentru a rezolva această problemă, ne vine în ajutor proprietatea
+              overflow cu valoarea ei hidden, care controlează vizibilitatea
+              conținutului debordant. Culoarea și dimensiunea chenarului din
+              exemplu sunt setate pentru vizualizare, nu este necesar să setați
+              alte valori decât raza.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="round-body">
+                <div class="round-thumb">
+                  <img
+                    class="img"
+                    src="https://images.pexels.com/photos/33492/cat-red-cute-mackerel.jpg?auto=compress&cs=tinysrgb&h=480&w=640"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <h3>Suprapunerea (overlay) decorativă</h3>
+            <p>
+              Proprietatea overflow cu valoarea hidden se folosește la crearea
+              efectelor decorative care au un conținut ascuns care apare din
+              afara marginilor elementului, după cum puteți vedea mai jos.
+            </p>
+
+            <!-- Exemplu -->
+            <div>
+              <p><b>Exemplu :</b></p>
+              <div class="overlay-body">
+                <h1 class="overlay-h1">Move the mouse over the square</h1>
+
+                <div class="overlay-box">
+                  <div class="overlay">
+                    <p>
+                      This content is hidden through transformation and only
+                      appears when hovering over <code>div.box</code>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Acest efect se realizează în câțiva pași simpli. Mai întâi, să
+                aruncăm o privire asupra stilurilor necesare pentru a crea acest
+                efect. Puteți vedea codul complet în exemplul live.
+              </p>
+              <p>
+                În primul rând, vom seta lui div.overlay o poziționarea absolută
+                în raport cu div.box și îl vom întinde pentru a se potrivi cu
+                lungimea și înălțimea completă a div.box.
+              </p>
+              <p>
+                Folosind proprietățile transform și translateX, deplasăm
+                div.overlay la stânga cu 100% din lățimea sa. Transformările vor
+                fi analizate în detaliu mai târziu.
+              </p>
+              <p>
+                Folosind transform și translateX îl vom configura astfel încât
+                atunci când trecem cu mouse-ul peste div.box, div.overlay va
+                reveni la poziția inițială.
+              </p>
+              <p>
+                Vom seta proprietatea overflow cu valoarea hidden pentru div.box
+                pentru a ascunde vizual div.overlay, atunci când acesta este
+                deplasat în afara marginilor div.box.
+              </p>
+              <p>
+                Animația o vom analiza în detaliu în lecțiile următoare,
+                deocamdată folosim doar o proprietate pentru a reda aspectul de
+                suprapunere. Pentru a anima proprietatea transform vom adăuga o
+                tranziție lui div.overlay.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
