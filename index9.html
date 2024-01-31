@@ -25,9 +25,15 @@
     <header>
       <nav>
         <ol style="list-style: upper-roman">
-          <li><a href="#poziționarea">Poziționarea elementelor</a></li>
-          <li><a href="#z-index">Proprietatea z-index</a></li>
-          <li><a href="#overflow">Proprietatea overflow</a></li>
+          <li>
+            <a href="#poziționarea"><b>Poziționarea elementelor</b></a>
+          </li>
+          <li>
+            <a href="#z-index"><b>Proprietatea z-index</b></a>
+          </li>
+          <li>
+            <a href="#overflow"><b>Proprietatea overflow</b></a>
+          </li>
         </ol>
       </nav>
     </header>
@@ -64,7 +70,7 @@
         </p>
         <ol>
           <li>
-            <h3>Proprietatea position</h3>
+            <h3 id="position">Proprietatea position</h3>
             <p>
               Aceasta modifică tipul de poziționare al unui element. Valoarea
               implicită este static. Pentru a specifica poziția unui element,
@@ -80,7 +86,7 @@
             </p>
           </li>
           <li>
-            <h3>Poziționarea relativă</h3>
+            <h3 id="relativa">Poziționarea relativă</h3>
             <p>
               Atunci când se utilizează poziționare relativă, elementul rămâne
               în fluxul paginii, adică elementele adiacente nu îi iau locul. Cu
@@ -121,7 +127,7 @@
             </div>
           </li>
           <li>
-            <h3>Poziționarea absolută</h3>
+            <h3 id="absolut">Poziționarea absolută</h3>
             <p>
               În cazul poziționării absolute, elementul principal este scos din
               fluxul paginii, iar cele adiacente îi iau locul. Valorile top,
@@ -204,7 +210,7 @@
             </p>
           </li>
           <li>
-            <h3>Poziționarea fixă</h3>
+            <h3 id="fix">Poziționarea fixă</h3>
             <p>
               Când se utilizează poziționarea fixă, elementul este scos din
               fluxul paginii și poziționat în raport cu fereastra de vizualizare
@@ -324,7 +330,7 @@
             </div>
           </li>
           <li>
-            <h3>Poziționarea sticky</h3>
+            <h3 id="sticky">Poziționarea sticky</h3>
             <p>
               Poziționarea sticky este ca o combinație dintre proprietățile
               relative și fixed. În primul rând, vedeți ilustrația în care
@@ -530,7 +536,7 @@
         </p>
         <ol>
           <li>
-            <h3>Reguli de aplicare</h3>
+            <h3 id="aplicare">Reguli de aplicare</h3>
             <p>
               Strămoșul comun al elementelor poziționate creează un context
               (context de stivuire) – o zonă în care proprietatea z-index a
@@ -617,7 +623,7 @@
         </p>
         <ol>
           <li>
-            <h3>Valoarea visible</h3>
+            <h3 id="visible">Valoarea visible</h3>
             <p>
               Să presupunem că proprietatea overflow nu este specificată. În
               acest caz, valoarea setată implicit este visible, ceea ce înseamnă
@@ -660,7 +666,7 @@
             </div>
           </li>
           <li>
-            <h3>Valoarea hidden</h3>
+            <h3 id="hidden">Valoarea hidden</h3>
             <p>
               Valoarea hidden are un efect opus celei anterioare. În acest caz,
               orice conținut debordant care se extinde dincolo de limitele
@@ -704,7 +710,7 @@
             </div>
           </li>
           <li>
-            <h3>Valoarea scroll</h3>
+            <h3 id="scroll">Valoarea scroll</h3>
             <p>
               Dacă valoarea scroll este setată, conținutul debordant va fi
               ascuns, dar vor apărea barele de scroll pentru a permite
@@ -737,7 +743,7 @@
             </div>
           </li>
           <li>
-            <h3>Valoarea auto</h3>
+            <h3 id="auto">Valoarea auto</h3>
             <p>
               Valoarea auto este similară cu valoarea scroll, cu excepția
               faptului că sunt afișate doar barele de scroll care sunt, de fapt,
@@ -768,7 +774,7 @@
             </div>
           </li>
           <li>
-            <h3>Imagini rotunjite</h3>
+            <h3 id="rotunjite">Imagini rotunjite</h3>
             <p>
               Imaginile se comportă în așa fel încât, dacă dimensiunea lor este
               mai mare, acestea ies vizual în afara elementului. Acest lucru
@@ -806,7 +812,7 @@
             </div>
           </li>
           <li>
-            <h3>Suprapunerea (overlay) decorativă</h3>
+            <h3 id="overlay">Suprapunerea (overlay) decorativă</h3>
             <p>
               Proprietatea overflow cu valoarea hidden se folosește la crearea
               efectelor decorative care au un conținut ascuns care apare din
